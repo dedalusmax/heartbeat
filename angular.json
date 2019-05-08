@@ -130,6 +130,41 @@
           }
         }
       }
+    },
+    "heartbeat-lib": {
+      "root": "projects/heartbeat-lib",
+      "sourceRoot": "projects/heartbeat-lib/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/heartbeat-lib/tsconfig.lib.json",
+            "project": "projects/heartbeat-lib/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/heartbeat-lib/src/test.ts",
+            "tsConfig": "projects/heartbeat-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/heartbeat-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/heartbeat-lib/tsconfig.lib.json",
+              "projects/heartbeat-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "heartbeat"
