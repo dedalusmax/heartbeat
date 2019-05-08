@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'heartbeat',
+  selector: 'heartbeat-component',
   template: `
   <span [style.color]="color" [style.font-size.em]="size">
     ♥
