@@ -4,13 +4,15 @@
 
 - open c:/Projects
 
-``ng new heartbeat``
-``cd test-lib``
-``code .``
+>ng new heartbeat
+
+>cd test-lib
+
+>code .
 
 - open terminal 
 
-ng serve
+>ng serve
 
 - open browser 
 
