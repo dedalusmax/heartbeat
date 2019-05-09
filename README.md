@@ -134,7 +134,7 @@ create file „collection.json“ in schematics folder:
 }
 ````
 
-Add in package.json:
+Add in lib's package.json:
 ````
 "schematics": "./schematics/collection.json"
 ````
@@ -146,12 +146,75 @@ import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
 // Just return the tree
-export function ngAdd(options: any): Rule {
-  return (tree: Tree, context: SchematicContext) => {
-    context.addTask(new NodePackageInstallTask());
+export function ngAdd(_options: any): Rule {
+  return (tree: Tree, _context: SchematicContext) => {
+    _context.addTask(new NodePackageInstallTask());
     return tree;
   };
 }
 ````
 
+add tsconfig.schematics.json in lib's folder:
+
+````
+
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "lib": [
+        "es2018",
+        "dom"
+      ],
+      "declaration": true,
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noEmitOnError": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "noImplicitThis": true,
+      "noUnusedParameters": true,
+      "noUnusedLocals": true,
+      "rootDir": "schematics",
+      "outDir": "../../dist/heartbeat-lib/schematics",
+      "skipDefaultLibCheck": true,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "strictNullChecks": true,
+      "target": "es6",
+      "types": [
+        "jasmine",
+        "node"
+      ]
+    },
+    "include": [
+      "schematics/**/*"
+    ],
+    "exclude": [
+      "schematics/*/files/**/*"
+    ]
+  }
+
+````
+
+add scripts into lib's package.json file:
+
+````
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "copy:collection": "copy schematics\\collection.json ..\\..\\dist\\heartbeat-lib\\schematics\\collection.json",
+    "postbuild": "npm run copy:collection"
+  },
+````
+from the root terminal:
+````
+ng build heartbeat-lib
+cd projects/heartbeat-lib
+npm run build
+````
+
+from the root in the terminal:
+````
+npm link dist/heartbeat-lib
+ng add heartbeat-lib
+````
 
