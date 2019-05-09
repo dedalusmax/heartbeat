@@ -65,3 +65,35 @@ in app.comp:
 <heartbeat-component color="green" size=4></heartbeat-component> 
 ````
 playaround with properties: size, color
+
+## ELEMENTS
+### branch `3-elements`
+
+````
+stop serve
+ng add @angular/elements
+````
+
+lib-component: 
+````
+encapsulation: ViewEncapsulation.ShadowDom
+````
+lib-module: exports -> entryComponents
+````
+  constructor(injector: Injector) {
+    const el = createCustomElement(HeartbeatLibComponent, { injector });
+    customElements.define('heartbeat-component', el);
+  }
+````
+public-api.ts: remove all except module
+app.module: 
+````
+schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
+import { HeartbeatLibModule } from 'heartbeat-lib';
+````
+tsconfig.json: 
+````
+target=es2015
+````
+
