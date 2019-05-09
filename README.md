@@ -4,17 +4,17 @@
 ### branch `1-start`
 
 open c:/Projects
+````
+ng new heartbeat
 
-`ng new heartbeat`
+cd test-lib
 
-`cd test-lib`
-
-`code .`
+code .
 
 open terminal 
 
-`ng serve`
-
+ng serve
+````
 open browser 
 
 ## LIBRARIES
