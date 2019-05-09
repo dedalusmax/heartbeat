@@ -1,7 +1,7 @@
 # Heartbeat
 
 ## INTRO
-# branch `1-start`
+### branch `1-start`
 
 open c:/Projects
 
@@ -18,7 +18,7 @@ open terminal
 open browser 
 
 ## LIBRARIES
-# branch `2-library`
+### branch `2-library`
 
 >ng g library heartbeat-lib
 
