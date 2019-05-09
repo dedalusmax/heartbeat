@@ -32,16 +32,19 @@ inspect dist folder
 
 add to component:
 
-`
+``
     <p [style.color]="color" [style.font-size.em]="size">
+    
       ALT + NUM 3
+      
     </p>
-`
+``
 
-`
+``
 @Input() public color = 'red';
+
 @Input() public size = 1;
-`
+``
 
 open in terminal: dist/heartbeat-lib
 
