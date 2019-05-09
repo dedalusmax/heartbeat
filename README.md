@@ -218,3 +218,21 @@ npm link dist/heartbeat-lib
 ng add heartbeat-lib
 ````
 
+## PWA
+### branch: `5-pwa`
+
+start with 1-start branch and serve the code
+
+show it in the browser with offline mode
+
+````
+ng add @angular/pwa
+ng build --prod
+npm install -g http-server
+http-server -p 8080 -c-1 dist/heartbeat
+````
+
+show it in browser online and offline
+
+
+
