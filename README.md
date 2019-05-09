@@ -5,46 +5,46 @@
 
 open c:/Projects
 
->ng new heartbeat
+`ng new heartbeat`
 
->cd test-lib
+`cd test-lib`
 
->code .
+`code .`
 
 open terminal 
 
->ng serve
+`ng serve`
 
 open browser 
 
 ## LIBRARIES
 ### branch `2-library`
 
->ng g library heartbeat-lib
+`ng g library heartbeat-lib`
 
 inspect the files in source control
 
 new terminal
 
->ng build heartbeat-lib --watch
+`ng build heartbeat-lib --watch`
 
 inspect dist folder
 
 add to component:
 
->`<p [style.color]="color" [style.font-size.em]="size">`
->
->      ALT + NUM 3
->  
->`    </p>`
+`<p [style.color]="color" [style.font-size.em]="size">`
 
->@Input() public color = 'red';
+`      ALT + NUM 3`
 
->@Input() public size = 1;
+`    </p>`
+
+`@Input() public color = 'red';`
+
+`@Input() public size = 1;`
 
 open in terminal: dist/heartbeat-lib
 
->npm link
+`npm link`
 
 close the terminal
 
