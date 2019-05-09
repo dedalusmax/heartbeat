@@ -3,7 +3,7 @@
 ## INTRO
 ### branch `1-start`
 
-open c:/Projects
+open _c:/Projects_
 ````
 ng new heartbeat
 
@@ -28,7 +28,7 @@ new terminal
 ````
 ng build heartbeat-lib --watch`
 ````
-inspect dist folder
+inspect _dist_ folder
 
 add to component:
 ````
@@ -39,7 +39,7 @@ add to component:
 @Input() public color = 'red';
 @Input() public size = 1;
 ````
-open in terminal: dist/heartbeat-lib
+open in terminal: _dist/heartbeat-lib_
 ````
 npm link
 ````
@@ -51,7 +51,7 @@ npm link heartbeat-lib
 
 ng serve
 ````
-in app.module:
+in _app.module.ts_:
 ````
 imports: [ HeartbeatLibModule ]
 ````
@@ -60,7 +60,7 @@ make sure it's:
 ````
 import { HeartbeatLibModule } from 'projects/heartbeat-lib/src/public-api';
 ````
-in app.comp:
+in _app.component.ts_:
 ````
 <heartbeat-component color="green" size=4></heartbeat-component> 
 ````
@@ -75,26 +75,26 @@ stop serve
 ng add @angular/elements
 ````
 
-lib-component: 
+in lib-component: 
 ````
 encapsulation: ViewEncapsulation.ShadowDom
 ````
-lib-module: exports -> entryComponents
+in lib-module: exports -> _entryComponents_
 ````
   constructor(injector: Injector) {
     const el = createCustomElement(HeartbeatLibComponent, { injector });
     customElements.define('heartbeat-component', el);
   }
 ````
-public-api.ts: remove all except module
+_public-api.ts_: remove all except module
 
-app.module: 
+_app.module_: 
 ````
 schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 import { HeartbeatLibModule } from 'heartbeat-lib';
 ````
-tsconfig.json: 
+_tsconfig.json_: 
 ````
 target=es2015
 ````
@@ -116,11 +116,11 @@ explain the reasons of not doing this way..
 
 switch to the project
 
-create folder „schematics“ in projects/heartbeat-lib folder
+create folder _schematics_ in _projects/heartbeat-lib_
 
-create folder „ng-add“ in schematics folder
+create folder _ng-add_ in _schematics_ folder
 
-create file „collection.json“ in schematics folder:
+create file _collection.json_ in _schematics_ folder:
 
 ````
 {
@@ -134,12 +134,12 @@ create file „collection.json“ in schematics folder:
 }
 ````
 
-Add in lib's package.json:
+Add in lib's _package.json_:
 ````
 "schematics": "./schematics/collection.json"
 ````
 
-Add index.ts in schematics/ng-add:
+Add _index.ts_ in _schematics/ng-add_:
 
 ````
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
@@ -154,7 +154,7 @@ export function ngAdd(_options: any): Rule {
 }
 ````
 
-add tsconfig.schematics.json in lib's folder:
+add _tsconfig.schematics.json_ in lib's folder:
 
 ````
 
@@ -196,7 +196,7 @@ add tsconfig.schematics.json in lib's folder:
 
 ````
 
-add scripts into lib's package.json file:
+add scripts into lib's _package.json_ file:
 
 ````
   "scripts": {
@@ -221,9 +221,9 @@ ng add heartbeat-lib
 ## PWA
 ### branch: `5-pwa`
 
-start with 1-start branch and serve the code
+start with _1-start_ branch and serve the code
 
-show it in the browser with offline mode
+show it in the browser with _offline_ mode
 
 ````
 ng add @angular/pwa
@@ -232,7 +232,41 @@ npm install -g http-server
 http-server -p 8080 -c-1 dist/heartbeat
 ````
 
-show it in browser online and offline
+show it in browser _online_ and _offline_
+
+## UNIVERSAL
+### branch: `6-universal`
+
+start with _1-start_ branch
+
+````
+ng add @nguniversal/express-engine --clientProject=heartbeat
+````
+
+take a look at changed files:
+
+show _package.json_ and new packages added
+
+explain _angular.json_ differences, added _main.server.ts_ and diff in _main.ts_
+
+explain _tsconfig.server.json_
+
+explain _app.server.module.ts_ and diff in _app.module.ts_
+
+explain _server.ts_ and webpack configuration file for server
+
+return to _package.json_ and explain scripts added
+
+````
+npm run build:ssr && npm run serve:ssr
+````
+
+open browser on  http://localhost:4000/
+
+play around with network throttling
+
+
+
 
 
 
