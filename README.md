@@ -69,8 +69,9 @@ playaround with properties: size, color
 ## ELEMENTS
 ### branch `3-elements`
 
-````
 stop serve
+
+````
 ng add @angular/elements
 ````
 
@@ -86,6 +87,7 @@ lib-module: exports -> entryComponents
   }
 ````
 public-api.ts: remove all except module
+
 app.module: 
 ````
 schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -96,4 +98,60 @@ tsconfig.json:
 ````
 target=es2015
 ````
+
+## SCHEMATICS
+### branch: `4-schematics`
+
+stop serve
+````
+npm i -g @angular-devkit/schematics-cli
+````
+open cmd
+````
+schematics blank --name=test-schema
+cd test-schema
+code .
+````
+explain the reasons of not doing this way..
+
+switch to the project
+
+create folder „schematics“ in projects/heartbeat-lib folder
+
+create folder „ng-add“ in schematics folder
+
+create file „collection.json“ in schematics folder:
+
+````
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add my library to the project.",
+      "factory": "./ng-add/index#ngAdd"
+    }
+  }
+}
+````
+
+Add in package.json:
+````
+"schematics": "./schematics/collection.json"
+````
+
+Add index.ts in schematics/ng-add:
+
+````
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+
+// Just return the tree
+export function ngAdd(options: any): Rule {
+  return (tree: Tree, context: SchematicContext) => {
+    context.addTask(new NodePackageInstallTask());
+    return tree;
+  };
+}
+````
+
 
