@@ -33,7 +33,7 @@ inspect dist folder
 add to component:
 
 ``
-    <p [style.color]="color" [style.font-size.em]="size">
+  <p [style.color]="color" [style.font-size.em]="size">
     
       ALT + NUM 3
       
@@ -41,9 +41,9 @@ add to component:
 ``
 
 ``
-@Input() public color = 'red';
+  @Input() public color = 'red';
 
-@Input() public size = 1;
+  @Input() public size = 1;
 ``
 
 open in terminal: dist/heartbeat-lib
@@ -60,14 +60,14 @@ inside normal folder:
 
 in app.module:
 
-> imports.. HeartbeatLibModule
+``  imports.. HeartbeatLibModule ``
 
 make sure it's:
 
-> import { HeartbeatLibModule } from 'projects/heartbeat-lib/src/public-api';
+``  import { HeartbeatLibModule } from 'projects/heartbeat-lib/src/public-api'; ``
 
 in app.comp:
 
-><heartbeat>...
+``  <heartbeat>... ``
   
 playaround with properties: size, color
