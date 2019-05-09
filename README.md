@@ -3,9 +3,7 @@
 ## INTRO
 
 open c:/Projects
-
-`ng new heartbeat`
-
+>ng new heartbeat
 cd test-lib
 
 >code .
