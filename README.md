@@ -32,11 +32,11 @@ inspect dist folder
 
 add to component:
 
-><p [style.color]="color" [style.font-size.em]="size">
+>`<p [style.color]="color" [style.font-size.em]="size">`
 >
 >      ALT + NUM 3
 >  
->    </p>
+>`    </p>`
 
 >@Input() public color = 'red';
 
