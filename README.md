@@ -5,8 +5,8 @@
 - open c:/Projects
 
 ``ng new heartbeat``
-cd test-lib
-code .
+``cd test-lib``
+``code .``
 
 - open terminal 
 
