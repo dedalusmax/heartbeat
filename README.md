@@ -265,7 +265,27 @@ open browser on  http://localhost:4000/
 
 play around with network throttling
 
+## NATIVE SCRIPT
 
+open file explorer and projects folder
+
+````
+npm install -g nativescript
+tns
+````
+
+install NativeScript playground app on Android/iOS
+
+````
+tns create
+tns preview
+````
+
+start playground app
+
+scan QR code
+
+make changes to home component
 
 
 
